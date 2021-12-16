@@ -1,5 +1,5 @@
-import React, { useState } from "react";
 import "./upload.css";
+import React, { useState } from "react";
 import { IoClose } from "react-icons/io5";
 
 function FileUploadPage() {
@@ -11,37 +11,29 @@ function FileUploadPage() {
     setIsSelected(true);
   };
 
-  const handleSubmission = () => {};
+  console.log(selectedFile);
 
   return (
     <div className="upload-box">
       <div className="elements">
-        <label for="files" class="btn">
+        <label htmlFor="uploadFile" className="btn">
           Select Image
         </label>
         <input
-          id="files"
-          style={{ visibility: "hidden" }}
+          id="uploadFile"
+          style={{ display: "none" }}
           type="file"
           onChange={changeHandler}
         />
         {isSelected ? (
           <div className="upload__elements">
             <p>{selectedFile.name} </p>
-            {/* <p>Filetype: {selectedFile.type}</p>
-            <p>Size in bytes: {selectedFile.size}</p>
-            <p>
-              lastModifiedDate:{" "}
-              {selectedFile.lastModifiedDate.toLocaleDateString()}
-            </p> */}
+            <img src={selectedFile.name} alt="" />
             <IoClose className="delete__img" />
           </div>
         ) : (
           <p>Select a file to show details</p>
         )}
-        <div>
-          <button onClick={handleSubmission}>Submit</button>
-        </div>
       </div>
     </div>
   );

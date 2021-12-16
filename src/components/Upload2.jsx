@@ -1,23 +1,9 @@
 import React, { useState } from "react";
 
 const Upload2 = () => {
-  // const [file, setFile] = useState(null);
-
-  // function uploadSingleFile(e) {
-  //   setFile(URL.createObjectURL(e.target.files[0]));
-  //   console.log("file", file);
-  // }
-
-  // function upload(e) {
-  //   e.preventDefault();
-  //   console.log(file);
-  // }
-  const [images, setImages] = useState([]);
-  const formData = new FormData();
   const [photo, setPhoto] = useState("");
 
   const handleImg = (e) => {
-    setImages(e.target.files[0]);
     console.log(e.target.files[0]);
     const { files } = e.target;
     if (files.length === 0) {
@@ -32,6 +18,7 @@ const Upload2 = () => {
     };
     fileReader.readAsDataURL(file);
   };
+
   const handlePhoto = () => {
     setPhoto("");
   };
@@ -42,7 +29,7 @@ const Upload2 = () => {
         <div className="form-group preview">
           {photo && (
             <>
-              <img src={photo} alt="" />
+              <img src={photo} alt="" style={{ borderRadius: "50%" }} />
               <button onClick={() => handlePhoto()}>DELETE</button>
             </>
           )}
@@ -51,17 +38,15 @@ const Upload2 = () => {
         <div className="form-group">
           <input
             type="file"
+            id="uploadFile"
             className="form-control"
             onChange={(e) => handleImg(e)}
+            style={{ display: "none" }}
           />
+          <label htmlFor="uploadFile" className="btn">
+            Select Image
+          </label>
         </div>
-        <button
-          type="button"
-          className="btn btn-primary btn-block"
-          // onClick={upload}
-        >
-          Upload
-        </button>
       </form>
     </div>
   );
