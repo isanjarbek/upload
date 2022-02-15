@@ -1,12 +1,12 @@
-import "./App.css";
-import FileUploadPage from "./components/Upload";
-// import Upload2 from "./components/Upload2";
+import FileUploadPage from "./components/Upload.js";
 
 function App() {
   return (
-    <div className="App">
+    <div
+      className="App"
+      style={{ display: "flex", justifyContent: "center", margin: "0 auto" }}
+    >
       <FileUploadPage />
-      {/* <Upload2 /> */}
     </div>
   );
 }
